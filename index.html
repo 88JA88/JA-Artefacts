@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalogue test — critères groupés</title>
+<style>
+:root { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:#222; background:#f4f4f2; }
+body { margin:0; }
+header { padding:18px 24px; background:white; border-bottom:1px solid #ddd; }
+header h1 { margin:0 0 5px; font-size:22px; }
+header p { margin:0; color:#666; }
+main { display:grid; grid-template-columns:340px 1fr; gap:18px; padding:18px; }
+.panel { background:#fff; border:1px solid #ddd; border-radius:10px; padding:16px; }
+h2 { font-size:16px; margin:0 0 12px; }
+.small { font-size:12px; color:#666; display:block; margin-bottom:4px; }
+input[type="number"], input[type="search"] { width:100%; box-sizing:border-box; padding:8px 9px; border:1px solid #bbb; border-radius:7px; }
+.dates { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.section { margin-top:15px; }
+.group { border:1px solid #ddd; border-radius:8px; margin:8px 0; overflow:hidden; }
+.group summary { cursor:pointer; padding:9px 10px; background:#f7f7f5; font-weight:650; font-size:14px; list-style-position:inside; }
+.group-body { padding:7px 10px 9px; max-height:180px; overflow:auto; }
+.kw { display:block; padding:3px 0; font-size:13px; }
+.controls { display:flex; gap:8px; margin-top:12px; }
+button { padding:8px 10px; border:1px solid #aaa; border-radius:7px; background:#f8f8f8; cursor:pointer; }
+button:hover { background:#eee; }
+.result-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; color:#555; }
+.card { border:1px solid #ddd; border-radius:9px; padding:14px; margin-bottom:10px; }
+.card h3 { margin:0 0 6px; font-size:17px; }
+.meta { font-size:13px; color:#555; margin:4px 0; }
+.tags { margin-top:7px; }
+.group-title { font-size:11px; font-weight:700; color:#777; margin-top:8px; text-transform:uppercase; }
+.tag { display:inline-block; padding:3px 7px; border-radius:999px; background:#efefec; margin:2px 4px 2px 0; font-size:12px; }
+a.pdf { display:inline-block; margin-top:10px; text-decoration:none; font-weight:650; }
+.note { font-size:12px; color:#666; line-height:1.35; margin-top:8px; }
+.empty { color:#777; padding:20px 4px; }
+@media(max-width:850px){ main{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="catalogueTitle">Catalogue test</h1>
+  <p>Critères groupés : choix rapide sans relire toute la liste.</p>
+</header>
+
+<main>
+<aside class="panel">
+  <h2>Recherche</h2>
+
+  <label class="small">Texte libre</label>
+  <input id="textSearch" type="search" placeholder="ex. fibule, Montferrand…">
+
+  <div class="section">
+    <label class="small">Date de l'objet</label>
+    <div class="dates">
+      <input id="dateMin" type="number" placeholder="de">
+      <input id="dateMax" type="number" placeholder="à">
+    </div>
+  </div>
+
+  <div class="section">
+    <label class="small">Date associée</label>
+    <div class="dates">
+      <input id="assocMin" type="number" placeholder="de">
+      <input id="assocMax" type="number" placeholder="à">
+    </div>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="resetBtn">Tout effacer</button>
+    <button type="button" id="showAllBtn">Tout afficher</button>
+  </div>
+
+  <div class="section">
+    <span class="small">Critères par groupe</span>
+    <div id="groups"></div>
+    <div class="note">
+      Plusieurs choix dans un même groupe = OU.<br>
+      Les groupes différents se combinent = ET.
+    </div>
+  </div>
+
+</aside>
+
+<section class="panel">
+  <div class="result-head">
+    <h2>Objets trouvés</h2>
+    <span id="count"></span>
+  </div>
+  <div id="results"></div>
+</section>
+</main>
+
+<script src="CATALOGUE/donnees.js"></script>
+<script>
+const GROUPES_CRITERES = DONNEES_CATALOGUE.groupes;
+const OBJETS = DONNEES_CATALOGUE.objets;
+
+document.getElementById('catalogueTitle').textContent =
+  `Catalogue test — ${OBJETS.length} objet${OBJETS.length > 1 ? 's' : ''}`;
+
+const groupsEl = document.getElementById('groups');
+const results = document.getElementById('results');
+const count = document.getElementById('count');
+const textSearch = document.getElementById('textSearch');
+const dateMin = document.getElementById('dateMin');
+const dateMax = document.getElementById('dateMax');
+const assocMin = document.getElementById('assocMin');
+const assocMax = document.getElementById('assocMax');
+const resetBtn = document.getElementById('resetBtn');
+const showAllBtn = document.getElementById('showAllBtn');
+
+Object.entries(GROUPES_CRITERES).forEach(([group, kws], idx) => {
+  const details = document.createElement('details');
+  details.className = 'group';
+  details.open = idx < 4;
+  const summary = document.createElement('summary');
+  summary.textContent = group;
+  const body = document.createElement('div');
+  body.className = 'group-body';
+  kws.forEach(kw => {
+    const label = document.createElement('label');
+    label.className = 'kw';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.dataset.group = group;
+    cb.value = kw;
+    cb.addEventListener('change', render);
+    label.appendChild(cb);
+    label.appendChild(document.createTextNode(' ' + kw));
+    body.appendChild(label);
+  });
+  details.appendChild(summary);
+  details.appendChild(body);
+  groupsEl.appendChild(details);
+});
+
+[textSearch, dateMin, dateMax, assocMin, assocMax].forEach(el => {
+  el.addEventListener('input', render);
+});
+
+function overlap(minA,maxA,minB,maxB) {
+  return minA <= maxB && maxA >= minB;
+}
+
+function selectedByGroup() {
+  const m = {};
+  groupsEl.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+    if (!m[cb.dataset.group]) m[cb.dataset.group] = [];
+    m[cb.dataset.group].push(cb.value);
+  });
+  return m;
+}
+
+function objectHasGroupSelection(o, group, selectedValues) {
+  const vals = o.criteria[group] || [];
+  return selectedValues.some(v => vals.includes(v)); // OR inside a group
+}
+
+function render() {
+  const chosen = selectedByGroup();
+  const q = textSearch.value.trim().toLowerCase();
+
+  const dmin = dateMin.value === '' ? null : Number(dateMin.value);
+  const dmax = dateMax.value === '' ? null : Number(dateMax.value);
+  const amin = assocMin.value === '' ? null : Number(assocMin.value);
+  const amax = assocMax.value === '' ? null : Number(assocMax.value);
+
+  const filtered = OBJETS.filter(o => {
+    for (const [group, vals] of Object.entries(chosen)) {
+      if (!objectHasGroupSelection(o, group, vals)) return false; // AND across groups
+    }
+
+    if (q) {
+      const allCriteria = Object.values(o.criteria).flat();
+      const hay = [o.id,o.designation,o.dateText,o.associatedText,...allCriteria].join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+
+    if (dmin !== null || dmax !== null) {
+      const qmin = dmin ?? -999999;
+      const qmax = dmax ?? 999999;
+      if (!overlap(o.dateMin,o.dateMax,qmin,qmax)) return false;
+    }
+
+    if (amin !== null || amax !== null) {
+      if (o.associatedDate === null) return false;
+      const qmin = amin ?? -999999;
+      const qmax = amax ?? 999999;
+      if (o.associatedDate < qmin || o.associatedDate > qmax) return false;
+    }
+    return true;
+  });
+
+  count.textContent = `${filtered.length} / ${OBJETS.length}`;
+
+  if (!filtered.length) {
+    results.innerHTML = '<div class="empty">Aucun objet ne correspond.</div>';
+    return;
+  }
+
+  results.innerHTML = filtered.map(o => {
+    const groups = Object.entries(o.criteria)
+      .filter(([_, vals]) => vals.length)
+      .map(([g, vals]) => `
+        <div class="group-title">${g}</div>
+        <div class="tags">${vals.map(v => `<span class="tag">${v}</span>`).join('')}</div>
+      `).join('');
+
+    return `
+      <article class="card">
+        <h3>${o.id} — ${o.designation}</h3>
+        <div class="meta"><strong>Datation numérique :</strong> ${o.dateMin} à ${o.dateMax}</div>
+        <div class="meta"><strong>Datation :</strong> ${o.dateText}</div>
+        ${o.associatedDate !== null ? `<div class="meta"><strong>Date associée :</strong> ${o.associatedDate} — ${o.associatedText}</div>` : ''}
+        ${groups}
+        <a class="pdf" href="${o.pdf}" target="_blank">Ouvrir le PDF</a>
+      </article>
+    `;
+  }).join('');
+}
+
+function clearResults() {
+  count.textContent = `0 / ${OBJETS.length}`;
+  results.innerHTML = '<div class="empty">Aucun objet affiché.</div>';
+}
+
+function clearFilters() {
+  textSearch.value = '';
+  dateMin.value = '';
+  dateMax.value = '';
+  assocMin.value = '';
+  assocMax.value = '';
+  groupsEl.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+}
+
+resetBtn.addEventListener('click', () => {
+  clearFilters();
+  clearResults();
+  textSearch.focus();
+});
+
+showAllBtn.addEventListener('click', () => {
+  clearFilters();
+  render();
+  textSearch.focus();
+});
+
+render();
+</script>
+</body>
+</html>

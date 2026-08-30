@@ -1,0 +1,9 @@
+/*
+!/.gitignore
+!/index.html
+!/CATALOGUE/
+/CATALOGUE/*
+!/CATALOGUE/donnees.js
+!/ANALYSES/
+!/ANALYSES/*.pdf
+.DS_Store
