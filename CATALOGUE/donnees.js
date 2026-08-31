@@ -1,872 +1,519 @@
 const DONNEES_CATALOGUE = {
-  "groupes": {
-  "Nature de l’objet": [
-    "ardillon de boucle",
-    "chevalière",
-    "extrémité de courroie",
-    "fibule",
-    "garniture de ceinture",
-    "pendant de harnais",
-    "sceau"
-  ],
-  "Lieu / aire géographique": [
-    "Angleterre",
-    "Bretagne romaine",
-    "Cancon",
-    "France",
-    "Gaule",
-    "Norique",
-    "Pannonie"
-  ],
-  "Époque / contexte": [
-    "à déterminer",
-    "Antiquité romaine",
-    "époque impériale",
-    "haut Moyen Âge",
-    "Ier-IIe siècle",
-    "IIe siècle",
-    "Ve-VIe siècles",
-    "VIe siècle",
-    "XIXe siècle"
-  ],
-  "Culture / civilisation": [
-    "à déterminer",
-    "attribution à préciser",
-    "franc",
-    "gallo-romain",
-    "mérovingien",
-    "norico-pannonien",
-    "romain",
-    "romano-britannique"
-  ],
-  "Matériau": [
-    "alliage cuivreux",
-    "émail",
-    "traces probables de dorure"
-  ],
-  "Technique / décor": [
-    "aile incisée",
-    "ailes déployées",
-    "animal aquatique",
-    "armoiries",
-    "aviforme",
-    "base scutiforme",
-    "bec recourbé",
-    "bosse centrale",
-    "canard stylisé",
-    "castor probable",
-    "cercles concentriques",
-    "chevrons",
-    "champlevé",
-    "compartiments triangulaires",
-    "corps fuselé",
-    "croissant",
-    "décor concentrique",
-    "décor incisé",
-    "décor linéaire",
-    "décor poinçonné",
-    "discoïdale",
-    "dorure",
-    "géométrique",
-    "héraldique",
-    "losange",
-    "long cou",
-    "lunule",
-    "motifs cruciformes",
-    "moulures",
-    "ocelles",
-    "oiseau",
-    "plaque rectangulaire",
-    "queue bifide",
-    "queue pointue",
-    "symétrique",
-    "tortue",
-    "umbonée",
-    "œil circulaire",
-    "zoomorphe"
-  ],
-  "Thème / nom propre": [
-    "alliance",
-    "Montferrand",
-    "Pellegrue"
-  ],
-  "Fonction / usage": [
-    "ceinture",
-    "élément de liaison",
-    "fermeture de ceinture",
-    "fixation",
-    "garniture articulée de ceinture",
-    "harnachement",
-    "parure vestimentaire",
-    "suspension",
-    "terminaison décorative de courroie"
-  ],
-  "État / particularité": [
-    "ardillon conservé"
-  ]
+  groupes: {
+    "Nature": "nature",
+    "Époque": "epoque",
+    "Culture / civilisation": "culture",
+    "Aire d’usage attesté": "aireGeographique",
+    "Matériaux métalliques": "materiauxMetalliques",
+    "Matériaux non métalliques": "materiauxNonMetalliques",
+    "Technique": "technique",
+    "Décor": "decor",
+    "Fonction / usage": "fonctionUsage"
   },
-  "objets": [
-  {
-    "id": "OBJ-0001",
-    "designation": "Chevalière armoriée Montferrand–Pellegrue",
-    "dateMin": 1800,
-    "dateMax": 1900,
-    "dateText": "XIXe siècle probable",
-    "associatedDate": 1577,
-    "associatedText": "Mariage François II de Montferrand et Claire de Pellegrue",
-    "criteria": {
-      "Nature de l’objet": [
-        "chevalière",
-        "sceau"
-      ],
-      "Lieu / aire géographique": [
-        "France",
-        "Cancon"
-      ],
-      "Époque / contexte": [
-        "XIXe siècle"
-      ],
-      "Culture / civilisation": [],
-      "Matériau": [],
-      "Technique / décor": [
-        "héraldique",
-        "armoiries"
-      ],
-      "Thème / nom propre": [
-        "Montferrand",
-        "Pellegrue",
-        "alliance"
-      ],
-      "Fonction / usage": []
-    },
-    "pdf": "ANALYSES/OBJ-0001_sceau_Montferrand_Pellegrue.pdf"
-  },
-  {
-    "id": "OBJ-0002",
-    "designation": "Fibule dragonesque émaillée",
-    "dateMin": 75,
-    "dateMax": 175,
-    "dateText": "Bretagne romaine, environ 75–175",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [
-        "Angleterre",
-        "Bretagne romaine"
-      ],
-      "Époque / contexte": [
-        "Antiquité romaine",
-        "IIe siècle"
-      ],
-      "Culture / civilisation": [
-        "romano-britannique",
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "champlevé",
-        "zoomorphe"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0002_Fibule_dragonesque.pdf"
-  },
-  {
-    "id": "OBJ-0003",
-    "designation": "Fibule discoïdale émaillée",
-    "dateMin": 100,
-    "dateMax": 250,
-    "dateText": "Époque romaine, probablement IIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [
-        "Gaule"
-      ],
-      "Époque / contexte": [
-        "Antiquité romaine",
-        "IIe siècle"
-      ],
-      "Culture / civilisation": [
-        "romain",
-        "gallo-romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "discoïdale",
-        "umbonée"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0003_fibule_gallo-romaine.pdf"
-  },
-  {
-    "id": "OBJ-0004",
-    "designation": "Fibule probable à décor d’ocelles",
-    "dateMin": 700,
-    "dateMax": 1000,
-    "dateText": "Haut Moyen Âge, attribution culturelle à préciser",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge"
-      ],
-      "Culture / civilisation": [],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "ocelles",
-        "cercles concentriques"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0004_fibule_ocelles.pdf"
-  },
-  {
-    "id": "OBJ-0005",
-    "designation": "Fibule discoïdale émaillée à bosse centrale",
-    "dateMin": 100,
-    "dateMax": 250,
-    "dateText": "Époque romaine, probablement IIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine",
-        "IIe siècle"
-      ],
-      "Culture / civilisation": [
-        "romain",
-        "gallo-romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "discoïdale",
-        "décor concentrique",
-        "bosse centrale"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0005_fibule_discoidale_emaillee.pdf"
-  },
-  {
-    "id": "OBJ-0006",
-    "designation": "Fibule-plaque symétrique émaillée",
-    "dateMin": 100,
-    "dateMax": 300,
-    "dateText": "Époque romaine, probablement IIe-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "géométrique",
-        "symétrique",
-        "compartiments triangulaires"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire",
-        "fixation"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0006_fibule_plaque_symetrique_emaillee.pdf"
-  },
-  {
-    "id": "OBJ-0007",
-    "designation": "Fibule-plaque rectangulaire émaillée à extrémités symétriques",
-    "dimensions": "3 x 1,6 cm",
-    "dateMin": 100,
-    "dateMax": 300,
-    "dateText": "Époque romaine, probablement IIe-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "géométrique",
-        "symétrique",
-        "plaque rectangulaire"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0007_fibule_plaque_rectangulaire_emaillee.pdf"
-  },
-  {
-    "id": "OBJ-0008",
-    "designation": "Fibule-plaque rectangulaire émaillée à décor de losanges",
-    "dimensions": "3 x 1,4 cm",
-    "dateMin": 100,
-    "dateMax": 300,
-    "dateText": "Époque romaine, probablement IIe-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "géométrique",
-        "plaque rectangulaire",
-        "losange"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0008_fibule_plaque_rectangulaire_emaillee_losanges.pdf"
-  },
-  {
-    "id": "OBJ-0009",
-    "designation": "Fibule-plaque rectangulaire émaillée à décor géométrique",
-    "dimensions": "3,6 x 1,3 cm",
-    "dateMin": 100,
-    "dateMax": 300,
-    "dateText": "Époque romaine, probablement IIe-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "géométrique",
-        "plaque rectangulaire",
-        "motifs cruciformes"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0009_fibule_plaque_rectangulaire_emaillee_geometrique.pdf"
-  },
-  {
-    "id": "OBJ-0010",
-    "designation": "Fibule à plaque losangique émaillée",
-    "dimensions": "3,4 x 1,5 cm",
-    "dateMin": 100,
-    "dateMax": 300,
-    "dateText": "Époque romaine, probablement IIe-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "émail"
-      ],
-      "Technique / décor": [
-        "losange",
-        "géométrique"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ],
-      "État / particularité": [
-        "ardillon conservé"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0010_fibule_plaque_losangique_emaillee.pdf"
-  },
-  {
-    "id": "OBJ-0011",
-    "designation": "Fibule arquée à décor d’ocelles",
-    "dimensions": "5 x 1,7 cm",
-    "dateMin": 600,
-    "dateMax": 900,
-    "dateText": "Haut Moyen Âge, attribution culturelle à préciser",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge"
-      ],
-      "Culture / civilisation": [
-        "attribution à préciser"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "ocelles",
-        "cercles concentriques",
-        "géométrique"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0011_fibule_arquee_ocelles.pdf"
-  },
-  {
-    "id": "OBJ-0012",
-    "designation": "Fibule zoomorphe en forme de tortue",
-    "dimensions": "3,2 x 1,9 cm",
-    "dateMin": 100,
-    "dateMax": 300,
-    "dateText": "Époque romaine, probablement IIe-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "tortue",
-        "moulures"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0012_fibule_zoomorphe_tortue.pdf"
-  },
-  {
-    "id": "OBJ-0013",
-    "designation": "Deux ardillons de boucles de ceinture à base scutiforme",
-    "dimensions": "Petit : 3,2 x 1,8 cm ; grand : 3,7 x 1,8 cm",
-    "dateMin": 500,
-    "dateMax": 700,
-    "dateText": "Haut Moyen Âge, probablement mérovingien",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "ardillon de boucle"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge"
-      ],
-      "Culture / civilisation": [
-        "mérovingien"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "base scutiforme",
-        "décor poinçonné",
-        "chevrons",
-        "géométrique"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "fermeture de ceinture"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0013_deux_ardillons_boucles_merovingiens.pdf"
-  },
-  {
-    "id": "OBJ-0014",
-    "designation": "Fibule aviforme mérovingienne",
-    "dimensions": "4 x 2 cm",
-    "dateMin": 500,
-    "dateMax": 600,
-    "dateText": "VIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge",
-        "VIe siècle"
-      ],
-      "Culture / civilisation": [
-        "mérovingien",
-        "franc"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "aviforme",
-        "oiseau",
-        "œil circulaire",
-        "aile incisée",
-        "bec recourbé"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0014_fibule_aviforme_merovingienne.pdf"
-  },
-  {
-    "id": "OBJ-0015",
-    "designation": "Deux éléments de garniture de ceinture norico-pannonienne à têtes de canard stylisées",
-    "dimensions": "Petit : 3,7 x 2,1 cm ; grand : 4 x 2 cm",
-    "dateMin": 40,
-    "dateMax": 150,
-    "dateText": "Époque romaine, Ier - milieu du IIe siècle apr. J.-C.",
-    "associatedDate": null,
-    "associatedText": "",
-    "criteria": {
-      "Nature de l’objet": [
-        "garniture de ceinture"
-      ],
-      "Lieu / aire géographique": [
-        "Norique",
-        "Pannonie"
-      ],
-      "Époque / contexte": [
-        "Antiquité romaine",
-        "Ier-IIe siècle"
-      ],
-      "Culture / civilisation": [
-        "romain",
-        "norico-pannonien"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "aviforme",
-        "canard stylisé"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "garniture articulée de ceinture",
-        "élément de liaison"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0015_garnitures_ceinture_canards_norico-pannoniennes.pdf"
-  },
-  {
-    "id": "OBJ-0016",
-    "designation": "Paire d’extrémités de courroie zoomorphes",
-    "dimensions": "4 et 4,2 x 1,5 cm",
-    "dateMin": 600,
-    "dateMax": 900,
-    "dateText": "Haut Moyen Âge",
-    "associatedDate": null,
-    "associatedText": "",
-    "keywords": [
-      "garniture de courroie",
-      "zoomorphe"
+  vocabulaires: {
+    nature: [
+      "Fibules",
+      "Bagues",
+      "Bijoux",
+      "Parures vestimentaires",
+      "Objets militaires",
+      "Monnaies",
+      "Objets domestiques",
+      "Outils"
     ],
-    "criteria": {
-      "Nature de l’objet": [
-        "extrémité de courroie"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge"
-      ],
-      "Culture / civilisation": [
-        "attribution à préciser"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "décor linéaire",
-        "décor incisé"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "terminaison décorative de courroie",
-        "ceinture"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0016_paire_extremites_courroie_zoomorphes.pdf"
-  },
-  {
-    "id": "OBJ-0018",
-    "designation": "Fibule aviforme franque à ailes déployées",
-    "dimensions": "3,3 x 1,7 cm",
-    "dateMin": 400,
-    "dateMax": 600,
-    "dateText": "Ve-VIe siècles, avec une probabilité plus forte pour le VIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "keywords": [
-      "zoomorphe",
-      "oiseau"
+    epoque: [
+      "Préhistoire",
+      "Protohistoire",
+      "Antiquité",
+      "Haut Moyen Âge",
+      "Moyen Âge",
+      "Époque moderne",
+      "Époque contemporaine"
     ],
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge",
-        "Ve-VIe siècles"
-      ],
-      "Culture / civilisation": [
-        "franc",
-        "mérovingien"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "oiseau",
-        "ailes déployées",
-        "queue bifide"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0018_fibule_aviforme_franque.pdf"
-  },
-  {
-    "id": "OBJ-0019",
-    "designation": "Fibule aviforme à long cou",
-    "dimensions": "2,9 x 1,2 cm",
-    "dateMin": 400,
-    "dateMax": 600,
-    "dateText": "Ve-VIe siècles",
-    "associatedDate": null,
-    "associatedText": "",
-    "keywords": [
-      "zoomorphe",
-      "oiseau",
-      "dorure"
+    culture: [
+      "Grecque",
+      "Romaine",
+      "Gauloise",
+      "Gallo-romaine",
+      "Barbare",
+      "Scandinave",
+      "Arabo-musulmane"
     ],
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "haut Moyen Âge",
-        "Ve-VIe siècles"
-      ],
-      "Culture / civilisation": [
-        "franc",
-        "mérovingien"
-      ],
-      "Matériau": [
-        "alliage cuivreux",
-        "traces probables de dorure"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "oiseau",
-        "dorure",
-        "long cou",
-        "corps fuselé",
-        "queue pointue"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0019_fibule_aviforme_long_cou.pdf"
-  },
-  {
-    "id": "OBJ-0020",
-    "designation": "Fibule zoomorphe figurant probablement un castor",
-    "dimensions": "3,9 x 1 cm",
-    "dateMin": null,
-    "dateMax": null,
-    "dateText": "À déterminer",
-    "associatedDate": null,
-    "associatedText": "",
-    "keywords": [
-      "zoomorphe",
-      "castor probable"
+    aireGeographique: [
+      "Angleterre",
+      "Bretagne romaine",
+      "Cancon",
+      "Empire romain",
+      "France",
+      "Gaule",
+      "Norique",
+      "Pannonie"
     ],
-    "criteria": {
-      "Nature de l’objet": [
-        "fibule"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "à déterminer"
-      ],
-      "Culture / civilisation": [
-        "à déterminer"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "zoomorphe",
-        "castor probable",
-        "animal aquatique"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "parure vestimentaire"
-      ]
-    },
-    "pdf": "ANALYSES/OBJ-0020_fibule_zoomorphe_castor_probable.pdf"
-  },
-  {
-    "id": "OBJ-0021",
-    "designation": "Pendant de harnais en forme de croissant à décor d’ocelles",
-    "dimensions": "4,2 x 3,4 cm",
-    "dateMin": 50,
-    "dateMax": 250,
-    "dateText": "Époque romaine impériale, probablement Ier-IIIe siècle",
-    "associatedDate": null,
-    "associatedText": "",
-    "keywords": [
-      "harnachement",
-      "pendant de harnais",
-      "croissant",
-      "lunule",
-      "ocelles"
+    materiauxMetalliques: [
+      "Bronze",
+      "Alliage cuivreux",
+      "Cuivre",
+      "Étain",
+      "Plomb",
+      "Argent",
+      "Or",
+      "Fer",
+      "Acier",
+      "Fonte"
     ],
-    "criteria": {
-      "Nature de l’objet": [
-        "pendant de harnais"
-      ],
-      "Lieu / aire géographique": [],
-      "Époque / contexte": [
-        "Antiquité romaine",
-        "époque impériale"
-      ],
-      "Culture / civilisation": [
-        "romain"
-      ],
-      "Matériau": [
-        "alliage cuivreux"
-      ],
-      "Technique / décor": [
-        "croissant",
-        "lunule",
-        "ocelles",
-        "cercles concentriques",
-        "décor poinçonné"
-      ],
-      "Thème / nom propre": [],
-      "Fonction / usage": [
-        "harnachement",
-        "suspension"
-      ]
+    materiauxNonMetalliques: [
+      "Verre",
+      "Émail",
+      "Pierre",
+      "Silex",
+      "Os",
+      "Bois",
+      "Céramique",
+      "Ivoire"
+    ],
+    technique: [
+      "Émaillé",
+      "Incisé",
+      "Poinçonné",
+      "Moulé",
+      "Doré",
+      "Champlevé"
+    ],
+    decor: [
+      "Géométrique",
+      "Zoomorphe",
+      "Anthropomorphe",
+      "Végétal",
+      "Héraldique",
+      "Inscription / épigraphique"
+    ],
+    fonctionUsage: [
+      "Vie quotidienne",
+      "Travail",
+      "Guerre",
+      "Rites / croyances"
+    ]
+  },
+  objets: [
+    {
+      id: "OBJ-0001",
+      designation: "Chevalière armoriée Montferrand–Pellegrue",
+      nature: ["Bagues"],
+      dimensions: "",
+      dateMin: 1800,
+      dateMax: 1900,
+      datation: "XIXe siècle probable",
+      epoque: ["Époque contemporaine"],
+      culture: [],
+      aireGeographique: ["France", "Cancon"],
+      materiauxMetalliques: [],
+      materiauxNonMetalliques: [],
+      technique: [],
+      decor: ["Héraldique"],
+      fonctionUsage: [],
+      particularites: "Chevalière à matrice gravée en creux montrant deux écus d’alliance accolés sous une couronne nobiliaire et entourés d’ornements. Deux animaux tenants, vraisemblablement des lions, encadrent l’ensemble. L’écu de gauche porte les armes Montferrand de Guyenne ; celui de droite une grue tenant sa vigilance pour Pellegrue. Petite marque en losange à l’intérieur de l’anneau et zone centrale de fixation ou de soudure au revers du plateau.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0001_sceau_Montferrand_Pellegrue.pdf"
     },
-    "pdf": "ANALYSES/OBJ-0021_pendant_harnais_croissant_ocelles.pdf"
-  }
+    {
+      id: "OBJ-0002",
+      designation: "Fibule dragonesque émaillée",
+      nature: ["Fibules"],
+      dimensions: "Environ 5 x 3 cm",
+      dateMin: 75,
+      dateMax: 175,
+      datation: "Bretagne romaine, environ 75–175",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: ["Angleterre", "Bretagne romaine"],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Moulé", "Émaillé", "Champlevé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Plaque plate dessinant un S, terminée par deux têtes animales opposées avec de grands appendices comparables à des oreilles et des museaux recourbés. La face porte des cellules circulaires avec des restes d’émail rouges ou orangés, bleus et turquoise. Au revers, l’épingle s’enroule autour d’un rétrécissement du corps.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0002_Fibule_dragonesque.pdf"
+    },
+    {
+      id: "OBJ-0003",
+      designation: "Fibule discoïdale émaillée",
+      nature: ["Fibules"],
+      dimensions: "Diamètre environ 3 cm",
+      dateMin: 100,
+      dateMax: 250,
+      datation: "Époque romaine, probablement IIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Gallo-romaine"],
+      aireGeographique: ["Gaule"],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Fibule en disque à décor concentrique, avec bosse centrale et compartiments radiaux conservant des traces d’émail orange et sombre. Le revers conserve la charnière et le porte-ardillon ; l’ardillon est perdu. Cette fibule se portait sur le vêtement : son ardillon traversait le tissu puis se bloquait dans le porte-ardillon. Elle associait donc fermeture du vêtement et fonction décorative.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0003_fibule_gallo-romaine.pdf"
+    },
+    {
+      id: "OBJ-0004",
+      designation: "Fibule probable à décor d’ocelles",
+      nature: ["Fibules"],
+      dimensions: "Environ 4 x 4 cm",
+      dateMin: 700,
+      dateMax: 1000,
+      datation: "Haut Moyen Âge, attribution culturelle à préciser",
+      epoque: ["Haut Moyen Âge"],
+      culture: [],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Poinçonné"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Plaque semi-circulaire portant plusieurs motifs de cercles concentriques ou ocelles. Le revers et le profil montrent une patte verticale perforée et, à l’autre extrémité, un petit ergot ou rebord relevé. L’ardillon n’est pas conservé. L’objet est probablement une fibule ou une broche destinée à fermer ou maintenir un vêtement. Cette fonction reste toutefois moins assurée que pour les exemplaires dont le système d’attache est complet.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0004_fibule_ocelles.pdf"
+    },
+    {
+      id: "OBJ-0005",
+      designation: "Fibule discoïdale émaillée à bosse centrale",
+      nature: ["Fibules"],
+      dimensions: "Environ 3,5 cm",
+      dateMin: 100,
+      dateMax: 250,
+      datation: "Époque romaine, probablement IIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Gallo-romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Disque circulaire muni de plusieurs appendices périphériques. La face est organisée en cercles concentriques autour d’une bosse centrale très saillante. Des restes d’émail bleu et des traces rouges et claires sont visibles. Le revers conserve des reliefs de l’ancien système de fixation. Cette fibule servait à maintenir un vêtement grâce à son ardillon, tout en constituant un élément de parure visible. Le décor émaillé renforçait sa fonction ornementale.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0005_fibule_discoidale_emaillee.pdf"
+    },
+    {
+      id: "OBJ-0006",
+      designation: "Fibule-plaque symétrique émaillée",
+      nature: ["Fibules"],
+      dimensions: "Environ 4,5 x 1,6 cm",
+      dateMin: 100,
+      dateMax: 300,
+      datation: "Époque romaine, probablement IIe–IIIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule-plaque symétrique à partie centrale rectangulaire. Le décor géométrique est composé de compartiments triangulaires avec des restes d’émail. De part et d’autre, des prolongements moulurés se terminent par des appendices arrondis. Le système d’attache au revers est incomplet. La fibule servait à fixer ou retenir une partie du vêtement. Sa plaque émaillée, visible une fois portée, avait également une fonction décorative.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0006_fibule_plaque_symetrique_emaillee.pdf"
+    },
+    {
+      id: "OBJ-0007",
+      designation: "Fibule-plaque rectangulaire émaillée à extrémités symétriques",
+      nature: ["Fibules"],
+      dimensions: "3 x 1,6 cm",
+      dateMin: 100,
+      dateMax: 300,
+      datation: "Époque romaine, probablement IIe–IIIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule-plaque symétrique autour d’une plaque centrale rectangulaire légèrement bombée. La face porte un décor compartimenté avec des restes d’émail rouge et verdâtre. Les extrémités latérales sont moulurées et symétriques. Le système d’attache au revers est incomplet. Portée sur le vêtement, cette fibule assurait une fixation tout en présentant sur la face visible un petit décor coloré en émail.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0007_fibule_plaque_rectangulaire_emaillee.pdf"
+    },
+    {
+      id: "OBJ-0008",
+      designation: "Fibule-plaque rectangulaire émaillée à décor de losanges",
+      nature: ["Fibules"],
+      dimensions: "3 x 1,4 cm",
+      dateMin: 100,
+      dateMax: 300,
+      datation: "Époque romaine, probablement IIe–IIIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule-plaque allongée centrée sur une plaque rectangulaire. La face présente une rangée de motifs en losange ou étoilés avec des restes d’émail clair et rouge. Le décor est encadré par des moulures longitudinales. Le système d’attache au revers est incomplet. Cette fibule se fixait au vêtement au moyen de son ardillon. La petite plaque décorée d’émail constituait la partie visible et ornementale.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0008_fibule_plaque_rectangulaire_emaillee_losanges.pdf"
+    },
+    {
+      id: "OBJ-0009",
+      designation: "Fibule-plaque rectangulaire émaillée à décor géométrique",
+      nature: ["Fibules"],
+      dimensions: "3,6 x 1,3 cm",
+      dateMin: 100,
+      dateMax: 300,
+      datation: "Époque romaine, probablement IIe–IIIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule-plaque allongée, centrée sur une plaque rectangulaire bordée de moulures. La face conserve une succession de petits motifs losangiques ou cruciformes et des traces d’émail clair. Le profil est nettement arqué. Le système d’attache au revers est incomplet. La fibule permettait de maintenir un vêtement ; sa plaque émaillée et géométrique restait visible comme élément de parure.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0009_fibule_plaque_rectangulaire_emaillee_geometrique.pdf"
+    },
+    {
+      id: "OBJ-0010",
+      designation: "Fibule à plaque losangique émaillée",
+      nature: ["Fibules"],
+      dimensions: "3,4 x 1,5 cm",
+      dateMin: 100,
+      dateMax: 300,
+      datation: "Époque romaine, probablement IIe–IIIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: ["Émail"],
+      technique: ["Émaillé"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule organisée autour d’une plaque centrale losangique divisée en quatre compartiments, avec des traces d’émail verdâtre et rouge. Une extrémité présente un décor annulaire et les bordures de petites moulures. L’ardillon est conservé au revers. L’ardillon traversait le tissu puis se bloquait dans le porte-ardillon afin de maintenir le vêtement. La plaque losangique émaillée formait la partie décorative visible.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0010_fibule_plaque_losangique_emaillee.pdf"
+    },
+    {
+      id: "OBJ-0011",
+      designation: "Fibule arquée à décor d’ocelles",
+      nature: ["Fibules"],
+      dimensions: "5 x 1,7 cm",
+      dateMin: 600,
+      dateMax: 900,
+      datation: "Haut Moyen Âge, attribution culturelle à préciser",
+      epoque: ["Haut Moyen Âge"],
+      culture: [],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Incisé", "Poinçonné"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Fibule allongée et fortement arquée. La face porte plusieurs excroissances ou disques décorés de petits cercles concentriques avec point central. Le corps central est étroit et longitudinal ; le profil montre une courbure très marquée. Le revers conserve des éléments du dispositif d’attache. Cette fibule servait probablement à fermer ou retenir une pièce de vêtement. Sa forte courbure ménageait l’espace nécessaire au passage du tissu sous l’arc.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0011_fibule_arquee_ocelles.pdf"
+    },
+    {
+      id: "OBJ-0012",
+      designation: "Fibule zoomorphe en forme de tortue",
+      nature: ["Fibules"],
+      dimensions: "3,2 x 1,9 cm",
+      dateMin: 100,
+      dateMax: 300,
+      datation: "Époque romaine, probablement IIe–IIIe siècle",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Moulé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule évoquant une tortue stylisée : une extrémité forme une tête avec museau, tandis que le corps central massif, encadré de fortes moulures transversales, rappelle une carapace. Le revers est épais et arqué avec des vestiges du système de fixation. La fibule se portait sur le vêtement comme système de fermeture ou de maintien. La forme animale donnait à l’objet une fonction décorative immédiatement visible.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0012_fibule_zoomorphe_tortue.pdf"
+    },
+    {
+      id: "OBJ-0013",
+      designation: "Deux ardillons de boucles de ceinture à base scutiforme",
+      nature: ["Parures vestimentaires"],
+      dimensions: "Petit : 3,2 x 1,8 cm ; grand : 3,7 x 1,8 cm",
+      dateMin: 500,
+      dateMax: 700,
+      datation: "Haut Moyen Âge, culture probablement mérovingienne",
+      epoque: ["Haut Moyen Âge"],
+      culture: [],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Poinçonné"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Deux pièces présentant chacune une longue pointe courbe et une base élargie en forme d’écu. Le petit exemplaire porte des impressions triangulaires ou cunéiformes disposées en rangées obliques et en petits chevrons. Les reliefs du revers correspondent à l’articulation sur l’axe de la boucle. Chaque ardillon était articulé sur l’axe d’une boucle de ceinture. Sa pointe venait s’engager dans un trou de la courroie pour fermer et régler la ceinture.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0013_deux_ardillons_boucles_merovingiens.pdf"
+    },
+    {
+      id: "OBJ-0014",
+      designation: "Fibule aviforme mérovingienne",
+      nature: ["Fibules"],
+      dimensions: "4 x 2 cm",
+      dateMin: 500,
+      dateMax: 600,
+      datation: "VIe siècle",
+      epoque: ["Haut Moyen Âge"],
+      culture: ["Barbare"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Incisé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Fibule en forme d’oiseau à silhouette très lisible : tête relevée, bec fortement recourbé, œil circulaire marqué et corps compact. L’aile est soulignée par un décor incisé ou moulé. Le revers conserve le dispositif de broche, avec ardillon et éléments de fixation. Cette petite fibule servait à fermer ou maintenir un vêtement. Sa forme d’oiseau en faisait également un élément de parure visible, caractéristique des productions franques du VIe siècle.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0014_fibule_aviforme_merovingienne.pdf"
+    },
+    {
+      id: "OBJ-0015",
+      designation: "Deux garnitures de ceinture norico-pannoniennes à têtes de canard stylisées",
+      nature: ["Parures vestimentaires"],
+      dimensions: "Petit : 3,7 x 2,1 cm ; grand : 4 x 2 cm",
+      dateMin: 40,
+      dateMax: 150,
+      datation: "Époque romaine, Ier–milieu du IIe siècle apr. J.-C.",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: ["Norique", "Pannonie"],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Moulé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Deux petites pièces de dimensions très proches figurant chacune un canard stylisé. La tête, le bec et le profil d’oiseau sont nettement lisibles. Chaque pièce présente une protubérance verticale près de la tête ainsi que des éléments de construction au revers. Ces éléments faisaient probablement partie d’une garniture de ceinture articulée. Ils pouvaient relier plusieurs pièces métalliques et participer à la fois au fonctionnement et au décor de la ceinture.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0015_garnitures_ceinture_canards_norico-pannoniennes.pdf"
+    },
+    {
+      id: "OBJ-0016",
+      designation: "Paire d’extrémités de courroie zoomorphes",
+      nature: ["Parures vestimentaires"],
+      dimensions: "4 et 4,2 x 1,5 cm",
+      dateMin: 600,
+      dateMax: 900,
+      datation: "Haut Moyen Âge",
+      epoque: ["Haut Moyen Âge"],
+      culture: [],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Incisé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Deux pièces presque identiques, longues d’environ 4 à 4,2 cm. Chaque élément possède un corps allongé légèrement courbe et une extrémité élargie portant une figure animale. Des lignes incisées soulignent la tête et le corps de l’animal. Ces pièces étaient probablement fixées à l’extrémité d’une courroie ou d’une ceinture. Elles protégeaient et rigidifiaient la terminaison de la lanière tout en la décorant.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0016_paire_extremites_courroie_zoomorphes.pdf"
+    },
+    {
+      id: "OBJ-0017",
+      designation: "Petite applique aviforme franque à tenon de fixation",
+      nature: ["Parures vestimentaires"],
+      dimensions: "1,9 x 0,9 cm environ, hors tenon",
+      dateMin: 500,
+      dateMax: 600,
+      datation: "VIe siècle probable",
+      epoque: ["Haut Moyen Âge"],
+      culture: ["Barbare"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Doré"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite applique en forme d’oiseau, au corps très allongé et à la tête relevée. Le revers présente un tenon rectangulaire massif, ce qui oriente vers une fixation sur un support plutôt que vers un système de fibule. Un petit reste métallique doré est visible sur la surface ; il peut correspondre à un vestige de dorure ancienne. Ce type de petite garniture servait probablement à décorer une courroie, une bourse, un élément d’habillement ou un autre support organique aujourd’hui disparu. Le support exact de cet exemplaire ne peut toutefois pas être déterminé sur les seules photographies.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0017_applique_aviforme_franque.pdf"
+    },
+    {
+      id: "OBJ-0018",
+      designation: "Fibule aviforme franque à ailes déployées",
+      nature: ["Fibules"],
+      dimensions: "3,3 x 1,7 cm",
+      dateMin: 400,
+      dateMax: 600,
+      datation: "Ve–VIe siècles, probabilité plus forte pour le VIe siècle",
+      epoque: ["Haut Moyen Âge"],
+      culture: ["Barbare"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Moulé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule représentant un oiseau aux ailes déployées. Le corps est allongé, les ailes largement ouvertes et la queue bifide. Le revers conserve un dispositif de broche lisible, avec élément de charnière et ardillon. La fibule servait à fixer ou maintenir le vêtement. La silhouette d’oiseau aux ailes ouvertes formait en même temps un motif de parure très visible.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0018_fibule_aviforme_franque.pdf"
+    },
+    {
+      id: "OBJ-0019",
+      designation: "Fibule aviforme à long cou",
+      nature: ["Fibules"],
+      dimensions: "2,9 x 1,2 cm",
+      dateMin: 400,
+      dateMax: 600,
+      datation: "Ve–VIe siècles",
+      epoque: ["Haut Moyen Âge"],
+      culture: ["Barbare"],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Doré"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule représentant un oiseau très allongé, au long cou relevé, au corps fuselé et à la queue pointue. Un petit éclat métallique doré subsiste sur la surface ; la dorure ancienne a presque entièrement disparu. Le revers montre les vestiges du système d’attache. Cette fibule servait à fermer ou maintenir le vêtement. Sa forme d’oiseau et sa probable dorure lui donnaient également une fonction de parure particulièrement visible.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0019_fibule_aviforme_long_cou.pdf"
+    },
+    {
+      id: "OBJ-0020",
+      designation: "Fibule zoomorphe figurant probablement un castor",
+      nature: ["Fibules"],
+      dimensions: "3,9 x 1 cm",
+      dateMin: null,
+      dateMax: null,
+      datation: "À déterminer",
+      epoque: [],
+      culture: [],
+      aireGeographique: [],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Moulé"],
+      decor: ["Zoomorphe"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Petite fibule au corps allongé et bombé, avec une extrémité élargie et l’autre plus étroite. La silhouette évoque un petit mammifère aquatique ; la lecture en castor est plausible en raison du corps massif et de l’impression d’une queue large et aplatie. Si l’identification comme fibule est correcte, l’objet se portait sur un vêtement comme système de fixation et élément de parure. L’animal représenté reste toutefois incertain.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0020_fibule_zoomorphe_castor_probable.pdf"
+    },
+    {
+      id: "OBJ-0021",
+      designation: "Pendant de harnais en forme de croissant à décor d’ocelles",
+      nature: ["Parures vestimentaires"],
+      dimensions: "4,2 x 3,4 cm",
+      dateMin: 50,
+      dateMax: 250,
+      datation: "50–250",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: ["Empire romain"],
+      materiauxMetalliques: ["Alliage cuivreux"],
+      materiauxNonMetalliques: [],
+      technique: ["Poinçonné"],
+      decor: ["Géométrique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Grand pendentif en forme de croissant, couvert de nombreux petits cercles pointés. La bélière tubulaire est très visible au sommet. Les deux extrémités inférieures sont allongées ; l’une conserve un petit ajour. Le revers est plat et montre plusieurs petits orifices. Objet immédiatement reconnaissable par sa forme de lunule et son semis d’ocelles. Ce pendant faisait partie du harnachement d’un cheval. Suspendu à une courroie ou à un élément métallique, il se balançait avec les mouvements de l’animal et jouait principalement un rôle décoratif.",
+      emplacement: "",
+      pdf: "ANALYSES/OBJ-0021_pendant_harnais_croissant_ocelles.pdf"
+    }
   ]
 };
