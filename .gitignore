@@ -1,6 +1,11 @@
 /*
 !/.gitignore
 !/index.html
+!/manifest.webmanifest
+!/sw.js
+!/catalogue-icon.svg
+!/catalogue-icon-192.png
+!/catalogue-icon-512.png
 !/.github/
 !/.github/workflows/
 !/.github/workflows/publier-vitrine.yml

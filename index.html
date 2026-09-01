@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#334b5c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Catalogue">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="catalogue-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="catalogue-icon-192.png">
 <title>Catalogue ANTIQUITÉS</title>
 <style>
 :root {
@@ -355,6 +362,10 @@ showAllBtn.addEventListener('click', () => {
 });
 
 render();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => undefined));
+}
 </script>
 </body>
 </html>
