@@ -4,6 +4,11 @@
 !/CATALOGUE/
 /CATALOGUE/*
 !/CATALOGUE/donnees.js
+!/CATALOGUE/vitrine.json
+!/CATALOGUE/generer_echange_vitrine.py
+!/CATALOGUE/LIEN_VITRINE.md
+!/CATALOGUE/vignettes/
+!/CATALOGUE/vignettes/*.jpg
 !/ANALYSES/
 !/ANALYSES/*.pdf
 .DS_Store
