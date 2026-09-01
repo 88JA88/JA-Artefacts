@@ -1,6 +1,9 @@
 /*
 !/.gitignore
 !/index.html
+!/.github/
+!/.github/workflows/
+!/.github/workflows/publier-vitrine.yml
 !/CATALOGUE/
 /CATALOGUE/*
 !/CATALOGUE/donnees.js
