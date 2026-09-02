@@ -56,6 +56,7 @@ const DONNEES_CATALOGUE = {
       "Étain",
       "Plomb",
       "Argent",
+      "Billon",
       "Or",
       "Fer",
       "Acier",
@@ -77,7 +78,8 @@ const DONNEES_CATALOGUE = {
       "Poinçonné",
       "Moulé",
       "Doré",
-      "Champlevé"
+      "Champlevé",
+      "Frappé"
     ],
     decor: [
       "Géométrique",
@@ -153,6 +155,7 @@ const DONNEES_CATALOGUE = {
       fonctionUsage: ["Vie quotidienne"],
       particularites: "Fibule en disque à décor concentrique, avec bosse centrale et compartiments radiaux conservant des traces d’émail orange et sombre. Le revers conserve la charnière et le porte-ardillon ; l’ardillon est perdu. Cette fibule se portait sur le vêtement : son ardillon traversait le tissu puis se bloquait dans le porte-ardillon. Elle associait donc fermeture du vêtement et fonction décorative.",
       emplacement: "",
+      vignette: "VIGNETTES/OBJ-0003.jpg",
       pdf: "ANALYSES/OBJ-0003_fibule_gallo-romaine.pdf"
     },
     {
@@ -433,6 +436,7 @@ const DONNEES_CATALOGUE = {
       fonctionUsage: ["Vie quotidienne"],
       particularites: "Petite applique en forme d’oiseau, au corps très allongé et à la tête relevée. Le revers présente un tenon rectangulaire massif, ce qui oriente vers une fixation sur un support plutôt que vers un système de fibule. Un petit reste métallique doré est visible sur la surface ; il peut correspondre à un vestige de dorure ancienne. Ce type de petite garniture servait probablement à décorer une courroie, une bourse, un élément d’habillement ou un autre support organique aujourd’hui disparu. Le support exact de cet exemplaire ne peut toutefois pas être déterminé sur les seules photographies.",
       emplacement: "",
+      vignette: "VIGNETTES/OBJ-0017.jpg",
       pdf: "ANALYSES/OBJ-0017_applique_aviforme_franque.pdf"
     },
     {
@@ -513,7 +517,29 @@ const DONNEES_CATALOGUE = {
       fonctionUsage: ["Vie quotidienne"],
       particularites: "Grand pendentif en forme de croissant, couvert de nombreux petits cercles pointés. La bélière tubulaire est très visible au sommet. Les deux extrémités inférieures sont allongées ; l’une conserve un petit ajour. Le revers est plat et montre plusieurs petits orifices. Objet immédiatement reconnaissable par sa forme de lunule et son semis d’ocelles. Ce pendant faisait partie du harnachement d’un cheval. Suspendu à une courroie ou à un élément métallique, il se balançait avec les mouvements de l’animal et jouait principalement un rôle décoratif.",
       emplacement: "",
+      vignette: "CATALOGUE/vignettes/OBJ-0021.jpg",
       pdf: "ANALYSES/OBJ-0021_pendant_harnais_croissant_ocelles.pdf"
+    },
+    {
+      id: "OBJ-0022",
+      designation: "Antoninien de Gallien, type LIBERALITAS AVGG",
+      nature: ["Monnaies"],
+      dimensions: "Diamètre 22 mm ; épaisseur environ 1,5 mm",
+      dateMin: 256,
+      dateMax: 256,
+      datation: "Vers 256",
+      epoque: ["Antiquité"],
+      culture: ["Romaine"],
+      aireGeographique: ["Empire romain"],
+      materiauxMetalliques: ["Billon"],
+      materiauxNonMetalliques: [],
+      technique: ["Frappé"],
+      decor: ["Anthropomorphe", "Inscription / épigraphique"],
+      fonctionUsage: ["Vie quotidienne"],
+      particularites: "Antoninien au flan irrégulier présentant à l'avers le portrait radié et cuirassé de Gallien tourné à droite. La légende IMP C P LIC GALLIENVS P F AVG est largement lisible. Le revers, plus difficile à interpréter en raison de l'usure et des reflets, porte la légende LIBERALITAS AVGG. Il semble représenter Valérien Ier et Gallien assis sur des sièges curules, avec le jeune Valérien II entre eux. Cette attribution au rare revers dynastique reste très probable, mais non absolument certaine sur les seules photographies.\n\nUSAGE -\nL'antoninien était une monnaie de circulation dans l'Empire romain. La couronne radiée portée par l'empereur permettait de reconnaître la dénomination. Outre sa fonction économique, la monnaie diffusait le portrait impérial et un message politique : ici, la générosité des empereurs et probablement la continuité de la dynastie sur trois générations.",
+      emplacement: "",
+      vignette: "VIGNETTES/OBJ-0022.jpg",
+      pdf: "ANALYSES/OBJ-0022_antoninien_Gallien_Liberalitas_AVGG.pdf"
     }
   ]
 };

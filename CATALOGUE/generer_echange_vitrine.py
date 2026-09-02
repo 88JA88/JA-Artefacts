@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Publie les titres et photos principales du catalogue pour VITRINE.
+"""Génère les fichiers de lecture de VITRINE depuis donnees.js.
 
-À exécuter après chaque ajout ou modification dans donnees.js. La plus grande
-image de la première page de chaque PDF devient la vignette de référence.
+donnees.js reste l'unique source de saisie. Les PDF et vignettes sont seulement
+référencés ; ce script ne fabrique ni ne remplace aucune photographie.
 """
 
 from __future__ import annotations
@@ -10,23 +10,26 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-
-from PIL import Image
-from pypdf import PdfReader
+from urllib.parse import urljoin
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "CATALOGUE" / "donnees.js"
-OUTPUT_FILE = ROOT / "CATALOGUE" / "vitrine.json"
-THUMBNAIL_DIR = ROOT / "CATALOGUE" / "vignettes"
+OUTPUT_FILE = ROOT / "CATALOGUE" / "catalogue.json"
+LEGACY_OUTPUT_FILE = ROOT / "CATALOGUE" / "vitrine.json"
+PUBLIC_BASE_URL = "https://88ja88.github.io/JA-Artefacts/"
 
 JS_STRING = r'"(?:\\.|[^"\\])*"'
-OBJECT_PATTERN = re.compile(
-    rf"\{{\s*id:\s*(?P<id>{JS_STRING}).*?"
-    rf"designation:\s*(?P<title>{JS_STRING}).*?"
-    rf"pdf:\s*(?P<pdf>{JS_STRING})\s*\}}",
-    re.DOTALL,
-)
+OBJECT_PATTERN = re.compile(rf"\{{\s*id:\s*(?P<id>{JS_STRING})(?P<body>.*?)\n    \}}", re.DOTALL)
+
+
+def read_string(body: str, field: str, *, required: bool = True) -> str | None:
+    match = re.search(rf"\b{re.escape(field)}:\s*(?P<value>{JS_STRING})", body)
+    if not match:
+        if required:
+            raise ValueError(f"Champ {field} manquant")
+        return None
+    return json.loads(match.group("value"))
 
 
 def parse_catalogue() -> list[dict[str, object]]:
@@ -34,48 +37,52 @@ def parse_catalogue() -> list[dict[str, object]]:
     objects: list[dict[str, object]] = []
     for match in OBJECT_PATTERN.finditer(source):
         object_id = json.loads(match.group("id"))
-        title = json.loads(match.group("title"))
-        pdf_path = json.loads(match.group("pdf"))
-        number_match = re.search(r"(\d+)$", object_id)
-        if not number_match:
-            raise ValueError(f"Numéro introuvable dans {object_id}")
+        body = match.group("body")
+        designation = read_string(body, "designation")
+        pdf_path = read_string(body, "pdf")
+        vignette_path = read_string(body, "vignette", required=False)
+        if not re.fullmatch(r"OBJ-\d{4}", object_id):
+            raise ValueError(f"Identifiant invalide : {object_id}")
+        if not (ROOT / str(pdf_path)).exists():
+            raise FileNotFoundError(ROOT / str(pdf_path))
+        if vignette_path and not (ROOT / vignette_path).exists():
+            raise FileNotFoundError(ROOT / vignette_path)
         objects.append({
-            "numero": int(number_match.group(1)),
             "id": object_id,
-            "titre": title,
-            "pdf": pdf_path,
-            "photo": f"CATALOGUE/vignettes/{object_id}.jpg",
+            "designation": designation,
+            "pdf": urljoin(PUBLIC_BASE_URL, str(pdf_path)),
+            "vignette": urljoin(PUBLIC_BASE_URL, vignette_path) if vignette_path else None,
         })
     if not objects:
         raise ValueError("Aucun objet trouvé dans donnees.js")
+    ids = [item["id"] for item in objects]
+    if len(ids) != len(set(ids)):
+        raise ValueError("Identifiant OBJ dupliqué dans donnees.js")
     return objects
-
-
-def extract_main_photo(pdf_path: Path, destination: Path) -> None:
-    page = PdfReader(pdf_path).pages[0]
-    candidates = [item.image for item in page.images]
-    if not candidates:
-        raise ValueError(f"Aucune image trouvée dans {pdf_path.name}")
-    photo = max(candidates, key=lambda image: image.width * image.height)
-    photo = photo.convert("RGB")
-    photo.thumbnail((700, 700), Image.Resampling.LANCZOS)
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    photo.save(destination, "JPEG", quality=86, optimize=True)
 
 
 def main() -> None:
     objects = parse_catalogue()
-    THUMBNAIL_DIR.mkdir(parents=True, exist_ok=True)
-    for item in objects:
-        pdf_path = ROOT / str(item["pdf"])
-        if not pdf_path.exists():
-            raise FileNotFoundError(pdf_path)
-        extract_main_photo(pdf_path, THUMBNAIL_DIR / f'{item["id"]}.jpg')
     OUTPUT_FILE.write_text(
-        json.dumps({"version": 1, "objets": objects}, ensure_ascii=False, indent=2) + "\n",
+        json.dumps({"version": 1, "source": "CATALOGUE/donnees.js", "objets": objects}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"{len(objects)} objets publiés pour VITRINE")
+    legacy_objects = []
+    for item in objects:
+        object_id = str(item["id"])
+        vignette_url = item["vignette"] or urljoin(PUBLIC_BASE_URL, f"CATALOGUE/vignettes/{object_id}.jpg")
+        legacy_objects.append({
+            "numero": int(object_id.removeprefix("OBJ-")),
+            "id": object_id,
+            "titre": item["designation"],
+            "pdf": item["pdf"],
+            "photo": vignette_url,
+        })
+    LEGACY_OUTPUT_FILE.write_text(
+        json.dumps({"version": 1, "objets": legacy_objects}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(f"{len(objects)} objets publiés depuis donnees.js")
 
 
 if __name__ == "__main__":

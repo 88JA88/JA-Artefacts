@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - CATALOGUE/donnees.js
+      - VIGNETTES/*.jpg
       - ANALYSES/*.pdf
 
 permissions:
@@ -22,19 +23,16 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Installer les outils d’image
-        run: python -m pip install --disable-pip-version-check pypdf Pillow
-
-      - name: Générer les titres et vignettes
+      - name: Générer les données lisibles par VITRINE
         run: python CATALOGUE/generer_echange_vitrine.py
 
       - name: Publier les fichiers mis à jour
         run: |
-          if git diff --quiet -- CATALOGUE/vitrine.json CATALOGUE/vignettes; then
+          if git diff --quiet -- CATALOGUE/catalogue.json CATALOGUE/vitrine.json; then
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add CATALOGUE/vitrine.json CATALOGUE/vignettes
+          git add CATALOGUE/catalogue.json CATALOGUE/vitrine.json
           git commit -m "Mettre à jour les données pour VITRINE"
           git push

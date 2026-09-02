@@ -12,6 +12,7 @@
 !/CATALOGUE/
 /CATALOGUE/*
 !/CATALOGUE/donnees.js
+!/CATALOGUE/catalogue.json
 !/CATALOGUE/vitrine.json
 !/CATALOGUE/generer_echange_vitrine.py
 !/CATALOGUE/LIEN_VITRINE.md
@@ -19,4 +20,6 @@
 !/CATALOGUE/vignettes/*.jpg
 !/ANALYSES/
 !/ANALYSES/*.pdf
+!/VIGNETTES/
+!/VIGNETTES/*.jpg
 .DS_Store
