@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator && window.isSecureContext) {
 }
 
 const objectList = document.querySelector('#object-list');
-const searchInput = document.querySelector('#object-search');
+const catalogueFilterButtons = document.querySelectorAll('[data-catalogue-filter]');
 const countBadge = document.querySelector('#count-badge');
 const catalogueCount = document.querySelector('#catalogue-count');
 const storageStatus = document.querySelector('#storage-status');
@@ -39,6 +39,7 @@ const cabinetButtons = document.querySelectorAll('[data-cabinet]');
 const shelfButtons = document.querySelectorAll('[data-shelf]');
 
 let catalogue = [];
+let catalogueFilter = 'all';
 let selectedId = null;
 let cabinet = 'V1';
 let shelf = 'E4';
@@ -254,12 +255,13 @@ function renderResearchCriteria() {
 }
 
 function visibleObjects() {
-  const query = searchInput.value.trim();
-  if (query && !/^\d+$/.test(query)) return [];
   const text = normalizeSearch(researchInput.value.trim());
   return catalogue.filter((item) => {
     const research = window.RECHERCHE?.[item.id];
-    return (!query || objectNumber(item.id) === Number(query))
+    const isPlaced = hasActivePlacement(item.id);
+    return (catalogueFilter === 'all'
+      || (catalogueFilter === 'placed' && isPlaced)
+      || (catalogueFilter === 'reserve' && !isPlaced))
       && normalizeSearch(`${research?.designation ?? item.designation}\n${research?.particularites ?? ''}`).includes(text)
       && researchFamilies.every(([field]) => {
         const selected = checkedCriteria.get(field);
@@ -270,6 +272,11 @@ function visibleObjects() {
 
 function renderList() {
   const visible = visibleObjects();
+  catalogueFilterButtons.forEach((button) => {
+    const isActive = button.dataset.catalogueFilter === catalogueFilter;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
   researchCount.textContent = `${visible.length} objet${visible.length === 1 ? '' : 's'} trouvé${visible.length === 1 ? '' : 's'}`;
   objectList.replaceChildren();
 
@@ -287,9 +294,9 @@ function renderList() {
     button.setAttribute('aria-pressed', String(item.id === selectedId));
     button.title = `${objectNumber(item.id)} — ${item.designation}`;
 
-    const dot = document.createElement('span');
-    dot.className = 'piece-dot';
-    dot.textContent = objectNumber(item.id);
+    const identifier = document.createElement('span');
+    identifier.className = 'object-id';
+    identifier.textContent = item.id;
 
     const image = document.createElement('img');
     image.className = 'list-photo';
@@ -303,13 +310,9 @@ function renderList() {
     designation.className = 'object-name';
     designation.textContent = item.designation;
 
-    const location = document.createElement('span');
-    location.className = 'object-location';
-    location.textContent = placementLabel(placementFor(item.id));
+    details.append(designation);
 
-    details.append(designation, location);
-
-    button.append(dot, image, details);
+    button.append(identifier, image, details);
     button.addEventListener('click', () => selectObject(item.id));
     objectList.append(button);
   }
@@ -454,7 +457,7 @@ function renderPlan() {
           const item = catalogue.find((candidate) => candidate.id === placement.objectId);
           if (!item) continue;
           const object = document.createElement('span');
-          object.className = 'zone-object';
+          object.className = `zone-object${item.id === selectedId ? ' is-selected' : ''}`;
           object.dataset.objectId = item.id;
           object.title = `${objectNumber(item.id)} — ${item.designation}`;
 
@@ -617,7 +620,10 @@ function loadCatalogue() {
   }
 }
 
-searchInput.addEventListener('input', renderList);
+catalogueFilterButtons.forEach((button) => button.addEventListener('click', () => {
+  catalogueFilter = button.dataset.catalogueFilter;
+  renderList();
+}));
 researchInput.addEventListener('input', renderList);
 clearResearch.addEventListener('click', () => {
   researchInput.value = '';

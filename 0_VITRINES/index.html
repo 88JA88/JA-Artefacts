@@ -35,10 +35,11 @@
           <span class="count-badge" id="count-badge">—</span>
         </div>
 
-        <label class="search-box" for="object-search">
-          <span aria-hidden="true">⌕</span>
-          <input id="object-search" inputmode="numeric" autocomplete="off" placeholder="Numéro exact…" aria-label="Rechercher un objet par numéro exact">
-        </label>
+        <div class="catalogue-filters" aria-label="Filtrer les objets du catalogue">
+          <button type="button" data-catalogue-filter="all" aria-pressed="true">Tous</button>
+          <button type="button" data-catalogue-filter="placed" aria-pressed="false">Classés</button>
+          <button type="button" data-catalogue-filter="reserve" aria-pressed="false">En réserve</button>
+        </div>
         <p class="catalogue-message" id="catalogue-message" hidden></p>
         <div class="object-list" id="object-list" aria-label="Liste des objets"></div>
       </aside>
